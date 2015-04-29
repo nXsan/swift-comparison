@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ComparisonMain {
 
-    private final static String RESOURCE_PATH = "С:/swift_files/";
+    private final static String RESOURCE_PATH = "";
 
     public static void main(String[] args) {
         ComparisonService cs = new ComparisonService();
@@ -30,13 +30,11 @@ public class ComparisonMain {
             resultCompare.append(ComparisonService.compare(message1, message2));
         }
         else {
-            resultCompare.append("not all files loaded");
+            resultCompare.append("File is empty!!!");
         }
 
         System.out.print(resultCompare.toString());
     }
-
-
 
 
 }

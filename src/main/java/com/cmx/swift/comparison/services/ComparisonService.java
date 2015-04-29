@@ -20,12 +20,13 @@ public class ComparisonService {
         SwiftMessage sm2;
         SwiftSingleton swiftSingleton = SwiftSingleton.getInstance();
 
-        // validating swift's
+        // Validating swift's
         try{
             sm1 = swiftSingleton.getMessage(fin1);
             sm2 = swiftSingleton.getMessage(fin2);
+
         } catch(SwiftParserException spe) {
-            result.append("Не удалось распарсить SWIFT");
+            result.append("Не удалось распарсить SWIFT! Неверный формат данных.");
             result.append(spe.getMessage());
             return result.toString();
         } catch(Exception e){
@@ -33,20 +34,23 @@ public class ComparisonService {
             return result.toString();
         }
 
-        // compare swift's
+        // Compare swift's
         if (sm1 != null && sm2 != null) {
 
-            if ( !sm1.getBlock1().equals(sm2.getBlock1()) ) {
+            if ( sm1.getBlock1() != null && !sm1.getBlock1().equals(sm2.getBlock1()) ) {
                 result.append("1ый блок одного файла не равен другому");
             };
-            if ( !sm1.getBlock2().equals(sm2.getBlock2()) ) {
+            if ( sm1.getBlock2() != null && !sm1.getBlock2().equals(sm2.getBlock2()) ) {
                 result.append("2ый блок одного файла не равен другому");
             };
-            if ( !sm1.getBlock3().equals(sm2.getBlock3()) ) {
+            if ( sm1.getBlock3() != null && !sm1.getBlock3().equals(sm2.getBlock3()) ) {
                 result.append("3ый блок одного файла не равен другому");
             };
-            if ( !sm1.getBlock4().equals(sm2.getBlock4()) ) {
+            if ( sm1.getBlock4() != null &&  !sm1.getBlock4().equals(sm2.getBlock4()) ) {
                 result.append("4ый блок одного файла не равен другому");
+            };
+            if ( sm1.getBlock5() != null &&  !sm1.getBlock5().equals(sm2.getBlock5()) ) {
+                result.append("5ый блок одного файла не равен другому");
             };
         }
 
